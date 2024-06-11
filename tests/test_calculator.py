@@ -2,6 +2,7 @@
 from decimal import Decimal
 import pytest
 from calculator import add, subtract, multiply, divide
+from calculator.calculation import Calculation
 
 def test_addition():
     '''Test that addition function works '''    
@@ -23,13 +24,14 @@ def test_divisionbyzero():
     '''Test that exception throwing works '''
     assert divide(2,0) == 0
 
-@pytest.mark.parametrize("a, b, operation, expected_result",
-[
-    (Decimal('2'), Decimal('2'), add, Decimal('4')),
-    (Decimal('2'), Decimal('2'), subtract, Decimal('0')),
-    (Decimal('2'), Decimal('2'), multiply, Decimal('4')),
-    (Decimal('2'), Decimal('2'), divide, Decimal('1')),
-])
-def test_operations(a, b, operation, expected_result):
-    '''test operations'''
-    assert operation(a, b) == expected_result
+def test_operations(a, b, operation, expected):
+    assert operation(a, b) == expected
+
+def test_operations_generated(a, b, operation, expected):
+    if expected == "ZeroDivisionError":
+        with pytest.raises(ValueError) as exc_info:
+            operation(a, b)
+        assert str(exc_info.value) == "Cannot divide by zero"
+    else:
+        assert operation(a, b) == expected
+
