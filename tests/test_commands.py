@@ -1,6 +1,12 @@
 from app import CommandHandler
 from unittest.mock import patch
 
+from app.plugins.divide import DivideCommand # type: ignore
+from app.plugins.exit import ExitCommand # type: ignore
+from app.plugins.menu import MenuCommand # type: ignore
+from app.plugins.multiply import MultiplyCommand # type: ignore
+from app.plugins.subtract import SubtractCommand # type: ignore
+from app.plugins.add import AddCommand # type: ignore
 
 def test_add_command(capsys):
 
@@ -78,5 +84,4 @@ def test_menu_command(capsys):
 
         handler.execute_command("menu")
         stdout, stderr = capsys.readouterr()
-        assert "Available commands:\nmenu\n" in stdout 
-
+        assert "Loaded commands:\n- menu\n" in stdout
