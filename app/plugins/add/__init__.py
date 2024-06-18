@@ -6,6 +6,7 @@ from calculator.operations import add
 
 
 class AddCommand(Command):
+    
     def execute(self):
         try:
             print("Enter first number:")

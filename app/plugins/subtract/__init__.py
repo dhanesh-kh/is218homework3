@@ -6,6 +6,7 @@ from calculator.operations import subtract
 
 
 class SubtractCommand(Command):
+    
     def execute(self):
         try:
             print("Enter first number:")

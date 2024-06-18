@@ -1,11 +1,5 @@
-from app import CommandHandler, AddCommand
+from app import CommandHandler
 from unittest.mock import patch
-
-from app.commands.divide import DivideCommand
-from app.commands.exit import ExitCommand
-from app.commands.menu import MenuCommand
-from app.commands.multiply import MultiplyCommand
-from app.commands.subtract import SubtractCommand
 
 
 def test_add_command(capsys):

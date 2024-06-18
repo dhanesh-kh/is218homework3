@@ -2,10 +2,11 @@ from decimal import Decimal
 import sys
 from app.commands import Command
 from calculator.calculation import Calculation
-from calculator.operations import divide
+from calculator.operations import multiply
 
 
-class DivideCommand(Command):
+class MultiplyCommand(Command):
+    
     def execute(self):
         try:
             print("Enter first number:")
@@ -15,7 +16,7 @@ class DivideCommand(Command):
             b = Decimal(input())
             print("Second number:", b)
 
-            calculation = Calculation(a, b, divide)
+            calculation = Calculation(a, b, multiply)
             result = calculation.get_result()
             print("Result:", result)
             
