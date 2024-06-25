@@ -22,7 +22,8 @@ def test_division():
 
 def test_divisionbyzero():
     '''Test that exception throwing works '''
-    assert divide(2,0) == 0
+    with pytest.raises(ValueError, match="divided by zero"):
+        divide(1, 0)
 
 def test_operations(a, b, operation, expected):
     assert operation(a, b) == expected
